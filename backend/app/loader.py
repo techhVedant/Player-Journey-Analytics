@@ -8,7 +8,13 @@ def load_all_data():
 
     for root, _, files in os.walk(DATA_PATH):
         for f in files:
+            if f.startswith("."):
+                continue
+
             filepath = os.path.join(root, f)
+            if os.path.basename(root) == "minimaps":
+                continue
+
             file_count += 1
             try:
                 df = pl.read_parquet(filepath, use_pyarrow=True)

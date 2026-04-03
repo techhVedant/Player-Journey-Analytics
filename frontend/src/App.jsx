@@ -8,7 +8,8 @@ import EventDrawer from "./components/EventDrawer";
 import OnboardingModal from "./components/OnboardingModal";
 import styles from "./App.module.css";
 
-const BASE_URL = "http://127.0.0.1:8000";
+const BASE_URL = import.meta.env.VITE_API_BASE_URL
+  ?? (import.meta.env.DEV ? "http://127.0.0.1:8000" : "/api");
 
 const safeDate = (ts) => {
   if (!ts) return 0;
