@@ -1,0 +1,159 @@
+.mapContainer {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  background-color: var(--bg-tertiary);
+  border: 1px solid var(--border-color);
+  box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.4);
+}
+
+.transformWrapper {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.transformContent {
+  width: 100% !important;
+  height: 100% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.mapAspectWrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  max-width: 1024px;
+  max-height: 1024px;
+  overflow: hidden;
+}
+
+.mapImage {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  opacity: 0.9;
+  filter: contrast(1.1) brightness(0.9); /* Makes map slightly darker, blending with dark mode */
+}
+
+.layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  transition: opacity 0.4s ease;
+  pointer-events: none; /* Let events pass if needed, though we handle hover on elements */
+}
+
+.layerVisible {
+  opacity: 1;
+}
+
+.layerHidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Heatmap Point */
+.heatmapPoint {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0.08; /* organic overlay */
+  filter: blur(8px);
+  mix-blend-mode: screen; /* brightens overlapping areas */
+}
+
+/* Event Point */
+.dotPoint {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  border: 1.5px solid rgba(255, 255, 255, 0.8);
+  pointer-events: auto;
+  transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.2s;
+  cursor: pointer;
+  z-index: 10;
+  opacity: 1;
+}
+
+.dotPoint:hover {
+  transform: translate(-50%, -50%) scale(1.8);
+  z-index: 20;
+}
+
+.tooltip {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translate(-50%, -8px) scale(0.95);
+  background-color: var(--glass-bg);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: var(--text-primary);
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 500;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.2s;
+  border: 1px solid var(--border-light);
+  box-shadow: var(--shadow-md);
+  z-index: 30;
+}
+
+.dotPoint:hover .tooltip {
+  opacity: 1;
+  transform: translate(-50%, -8px) scale(1);
+}
+
+/* Empty State */
+.emptyState {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--bg-tertiary);
+  border-radius: 12px;
+  border: 1px dashed var(--border-color);
+}
+
+.emptyContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  max-width: 320px;
+  text-align: center;
+}
+
+.emptyIcon {
+  font-size: 48px;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
+  opacity: 0.8;
+}
+
+.emptyContent h2 {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.emptyContent p {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}

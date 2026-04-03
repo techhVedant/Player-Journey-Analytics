@@ -1,0 +1,237 @@
+.sidebar {
+  width: 320px;
+  background-color: var(--glass-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-right: 1px solid var(--glass-border);
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  overflow-y: auto;
+  gap: 24px;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.sectionTitle {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+}
+
+.divider {
+  height: 1px;
+  background-color: var(--glass-border);
+  width: 100%;
+}
+
+.controlGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.label {
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.selectWrapper {
+  position: relative;
+}
+
+.select {
+  width: 100%;
+  appearance: none;
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  padding: 10px 14px;
+  font-size: 14px;
+  border-radius: 8px;
+  font-family: inherit;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+
+.select:focus {
+  outline: none;
+  border-color: var(--accent-primary);
+  box-shadow: 0 0 0 1px var(--accent-primary);
+}
+
+.select:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.chevron {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 10px;
+  height: 10px;
+  pointer-events: none;
+}
+
+.chevron::before,
+.chevron::after {
+  content: '';
+  position: absolute;
+  width: 2px;
+  height: 6px;
+  background-color: var(--text-muted);
+  top: 2px;
+}
+.chevron::before {
+  transform: rotate(-45deg);
+  left: 2px;
+}
+.chevron::after {
+  transform: rotate(45deg);
+  right: 4px;
+}
+
+/* Play/Pause Button */
+.playButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 12px;
+  background-color: var(--text-primary);
+  color: var(--bg-primary);
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.1s, background-color 0.2s;
+}
+
+.playButton:hover {
+  background-color: #e5e5e5;
+  transform: scale(0.98);
+}
+.playButton:active {
+  transform: scale(0.95);
+}
+
+.playButton.isPlaying {
+  background-color: var(--bg-tertiary);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+}
+.playButton.isPlaying:hover {
+  background-color: var(--border-color);
+}
+
+/* Heatmap Button */
+.heatmapButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 10px;
+  background-color: var(--bg-secondary);
+  color: var(--text-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.heatmapButton:hover {
+  background-color: var(--bg-tertiary);
+}
+
+.heatmapButton.activeHeatmap {
+  background-color: rgba(245, 158, 11, 0.1); /* Amber transparent */
+  border-color: rgba(245, 158, 11, 0.4);
+  color: var(--accent-warning);
+}
+
+.flameActive {
+  color: var(--accent-warning);
+  fill: var(--accent-warning);
+}
+
+/* Pills */
+.pillGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.eventPill {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  color: var(--text-secondary);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.eventPill:hover {
+  border-color: var(--text-muted);
+}
+
+.eventPill.activePill {
+  background-color: color-mix(in srgb, var(--pill-color) 15%, transparent);
+  border-color: color-mix(in srgb, var(--pill-color) 50%, transparent);
+  color: var(--text-primary);
+}
+
+.eventPill.activePill svg {
+  color: var(--pill-color);
+}
+
+/* Segmented Control */
+.segmentedControl {
+  display: flex;
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 3px;
+  gap: 2px;
+}
+
+.segment {
+  flex: 1;
+  padding: 6px 0;
+  background: transparent;
+  border: none;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.segment:hover {
+  color: var(--text-primary);
+}
+
+.segment.activeSegment {
+  background-color: var(--bg-tertiary);
+  color: var(--text-primary);
+  box-shadow: var(--shadow-sm);
+}
