@@ -64,13 +64,30 @@
 /* Heatmap Point */
 .heatmapPoint {
   position: absolute;
-  width: 40px;
-  height: 40px;
+  width: 78px;
+  height: 78px;
   border-radius: 50%;
   transform: translate(-50%, -50%);
-  opacity: 0.08; /* organic overlay */
-  filter: blur(8px);
-  mix-blend-mode: screen; /* brightens overlapping areas */
+  opacity: 0.5;
+  filter: blur(12px) saturate(1.55) brightness(1.18);
+  mix-blend-mode: screen;
+  will-change: transform, opacity, filter;
+  animation: heatPulse 2.8s ease-in-out infinite;
+}
+
+@keyframes heatPulse {
+  0%,
+  100% {
+    opacity: 0.42;
+    filter: blur(11px) saturate(1.45) brightness(1.1);
+    transform: translate(-50%, -50%) scale(0.96);
+  }
+
+  50% {
+    opacity: 0.58;
+    filter: blur(13px) saturate(1.7) brightness(1.28);
+    transform: translate(-50%, -50%) scale(1.06);
+  }
 }
 
 /* Event Point */

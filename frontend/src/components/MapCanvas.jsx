@@ -19,6 +19,17 @@ const getEventColor = (event) => {
   }
 };
 
+const getHeatmapStyle = (event, px, py) => {
+  const color = getEventColor(event);
+
+  return {
+    left: `${(px / 1024) * 100}%`,
+    top: `${(py / 1024) * 100}%`,
+    background: `radial-gradient(circle, rgba(255,255,255,0.98) 0%, rgba(255,255,255,0.92) 12%, ${color} 28%, rgba(255,255,255,0.28) 62%, rgba(255,255,255,0) 100%)`,
+    boxShadow: `0 0 20px rgba(255,255,255,0.45), 0 0 34px ${color}, 0 0 62px ${color}`,
+  };
+};
+
 export default function MapCanvas({
   selectedMap,
   showHeatmap,
@@ -71,11 +82,7 @@ export default function MapCanvas({
                 <div
                   key={`heat-${i}`}
                   className={styles.heatmapPoint}
-                  style={{
-                    left: `${(e.px / 1024) * 100}%`,
-                    top: `${(e.py / 1024) * 100}%`,
-                    backgroundColor: getEventColor(e.event),
-                  }}
+                  style={getHeatmapStyle(e.event, e.px, e.py)}
                 />
               ))}
             </div>
