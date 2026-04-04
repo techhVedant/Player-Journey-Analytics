@@ -102,14 +102,3 @@ This architecture matched the product well because the app is:
 - small enough to avoid premature database and microservice complexity
 
 In short, we chose a simple monorepo-style full-stack architecture with a static frontend and a thin analytics API because it delivered the fastest path to a working, deployable visualization product while keeping the codebase understandable and easy to iterate on.
-
-## Future Evolution
-
-If the product grows, the next likely architectural steps would be:
-
-- move dataset storage and query logic into a dedicated database or analytics store
-- add caching or pre-aggregated tiles for larger heatmap workloads
-- separate backend ingestion from backend serving
-- add authentication and user-specific workspaces if multi-user access is needed
-
-For the current scope, though, the existing architecture is intentionally pragmatic and appropriate.
