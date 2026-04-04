@@ -2,6 +2,8 @@
 
 Interactive analytics app for exploring player movement, loot, kills, deaths, and storm events on game maps.
 
+Live app: `https://player-journey-analytics-web.vercel.app/`
+
 ## Tech Stack
 
 - Frontend: React + Vite
